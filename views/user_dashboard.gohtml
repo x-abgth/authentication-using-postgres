@@ -1,0 +1,75 @@
+{{ template "header" . }}
+    <body id="user-dashboard-body">
+        <nav class="navbar navbar-light justify-content-between px-5">
+            <a class="navbar-brand" href=""><img id="nike-main-logo" src="./assets/images/Nike_logo_black.png" alt="logo"></a>
+            <a href="" class="nav-user-profile p-2">
+                <div>
+                    <label id="nav-username">{{ .UserName }}</label>
+                    <label id="nav-logout-bt">Logout</label>
+                </div>
+                <i class='fas fa-user-circle ms-3' style='font-size:36px'></i>
+            </a>
+        </nav>
+        <section id="user-dashboard-bg" class="row p-5">
+            <!-- First Item -->
+            <div class="card user-nike-card me-3" style="width: 18rem;">
+                <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/18800806/2022/7/13/61cef584-4ff4-4166-8c3f-c62b55c1eeb11657697118737-W-NIKE-COURT-VISION-LO-CNVS-3901657697118411-1.jpg" class="card-img-top" alt="nike-shoes-1">
+                <div class="card-body">
+                    <h5 class="card-title">Women white solid sneakers.</h5>
+                    <p class="card-text">
+                        Rs. 7495
+                    </p>
+                    <a href="" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+            <!-- Second Item -->
+            <div class="card user-nike-card me-3" style="width: 18rem;">
+                <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/18962836/2022/7/22/e6b52847-c6bb-4503-afd9-99683cd8cc3d1658466573478-AS-M-NK-DF-RUN-DVN-CRE-GX-SS-T-5891658466573018-1.jpg" class="card-img-top" alt="nike-shoes-1">
+                <div class="card-body">
+                    <h5 class="card-title">Men Lime Green & Grey Brand Logo Printed Dri-FIT Running T-shirt</h5>
+                    <p class="card-text">
+                        Rs. 2195
+                    </p>
+                    <a href="" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+            <!-- Third Item -->
+            <div class="card user-nike-card me-3" style="width: 18rem;">
+                <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/18800908/2022/8/12/66e4cfbc-85e9-4fdf-ab22-501b696e783e1660283639456-Nike-Women-Black-Legend-Essential-2-Training-Shoes-134166028-11.jpg" class="card-img-top" alt="nike-shoes-1">
+                <div class="card-body">
+                    <h5 class="card-title">Women Black Legend Essential 2 Training Shoes</h5>
+                    <p class="card-text">
+                        Rs. 4045
+                    </p>
+                    <a href="" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+            <!-- Forth Item -->
+            <div class="card user-nike-card me-3" style="width: 18rem;">
+                <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/18139572/2022/6/23/c4843c68-22b5-40fd-870b-3d3d6a5137841655967186028-THFC-M-NK-DF-STAD-JSY-SS-HM-6631655967185435-1.jpg" class="card-img-top" alt="nike-shoes-1">
+                <div class="card-body">
+                    <h5 class="card-title">Men White & Red Printed Basketball Sports T-shirt</h5>
+                    <p class="card-text">
+                        Rs. 3756
+                    </p>
+                    <a href="" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+            <!-- Fifth Item -->
+            <div class="card user-nike-card me-3" style="width: 18rem;">
+                <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/18962782/2022/7/18/98700a87-5cef-428e-b0f4-5816877c51ca1658126545017-Nike-Dri-FIT-Epic-Mens-Full-Zip-Knit-Training-Jacket-1161658-1.jpg" class="card-img-top" alt="nike-shoes-1">
+                <div class="card-body">
+                    <h5 class="card-title">Men Black Solid Dri-FIT Training Sporty Jacket</h5>
+                    <p class="card-text">
+                        Rs. 3095
+                    </p>
+                    <a href="" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+        </section>
+
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    </body>
+</html>

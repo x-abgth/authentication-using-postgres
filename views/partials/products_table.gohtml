@@ -1,0 +1,28 @@
+<!--  Table starts from here  -->
+<div class="row my-5 complete-table-wrap active" id="products-table-sec">
+  <h3 class="fs-4 mb-3">Products Table</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm  table-hover" id="products-table">
+      <thead>
+      <tr>
+        <th scope="col" width="50">product_id</th>
+        <th scope="col">product_name</th>
+        <th scope="col">product_price</th>
+        <th scope="col">product_img_url</th>
+        <th scope="col">operations</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{ range .ProductsTb }}
+        <tr>
+          <th scope="row">{{ .ProductId }}</th>
+          <td>{{ .ProductName }}</td>
+          <td>{{ .ProductPrice }}</td>
+          <td>{{ .ProductUrl }}</td>
+          <td></td>
+        </tr>
+      {{ end }}
+      </tbody>
+    </table>
+  </div>
+</div>

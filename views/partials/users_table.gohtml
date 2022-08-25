@@ -1,0 +1,36 @@
+<!--  Table starts from here  -->
+<div class="row my-5 complete-table-wrap" id="users-table-sec">
+    <h3 class="fs-4 mb-3">Users Table</h3>
+    <div class="col">
+        <table class="table bg-white rounded shadow-sm  table-hover"  id="users-table">
+            <thead>
+            <tr>
+                <th scope="col" width="50">user_id</th>
+                <th scope="col">user_name</th>
+                <th scope="col">user_email</th>
+                <th scope="col">product_id_1</th>
+                <th scope="col">product_id_2</th>
+                <th scope="col">product_id_3</th>
+                <th scope="col">product_id_4</th>
+                <th scope="col">product_id_5</th>
+                <th scope="col">operations</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{ range .UsersTb }}
+                <tr>
+                    <th scope="row">{{ .UserId }}</th>
+                    <td>{{ .UserName }}</td>
+                    <td>{{ .UserEmail }}</td>
+                    <td>{{ .UserProduct1 }}</td>
+                    <td>{{ .UserProduct2 }}</td>
+                    <td>{{ .UserProduct3 }}</td>
+                    <td>{{ .UserProduct4 }}</td>
+                    <td>{{ .UserProduct5 }}</td>
+                    <td></td>
+                </tr>
+            {{ end }}
+            </tbody>
+        </table>
+    </div>
+</div>

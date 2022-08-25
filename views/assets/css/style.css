@@ -1,0 +1,301 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#login-page-bg {
+    background-size: cover;
+    background: url("../images/login-bg.jpg") no-repeat fixed;
+    background-position-x: center;
+    background-position-y: -40vh;
+}
+
+#admin-login-page-bg {
+    background-size: cover;
+    background: url("../images/login-bg.jpg") no-repeat fixed;
+    background-position-x: center;
+    background-position-y: -40vh;
+}
+
+.login-card{
+    color: white;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+}
+
+.login-card:before{
+    content: "";
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+    margin: -20px;
+}
+
+.login-title-text{
+    display: flex;
+    width: 200%;
+}
+
+.title-for-login-page{
+    width: 50%;
+    text-align: center;
+}
+
+.form-container{
+    width: 100%;
+    overflow: hidden;
+}
+
+.form-container .slide-controls{
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+}
+
+.slide-controls .slide{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.6s ease;
+}
+
+.slide-controls .slide-tab{
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    border-radius: 5px;
+    left: 0;
+    z-index: 0;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265, 1.55);
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+.form-label{
+    color: #cccccc;
+}
+
+#register-radio-bt:checked ~ .slide-tab{
+    left: 50%;
+}
+
+.form-container .form-inner{
+    display: flex;
+    width: 200%;
+}
+
+.form-container .form-inner form{
+    width: 50%;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265, 1.55);
+}
+
+.account-switch{
+    color: #cccccc;
+    text-align: center;
+}
+
+.account-switch a{
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.account-switch a:hover{
+    color: deepskyblue;
+}
+
+/* USER DASHBOARD PAGE */
+
+#user-dashboard-body{
+    overflow-x: hidden;
+}
+
+#user-dashboard-bg{
+    height: 100vh;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#nike-main-logo{
+    width: 100px;
+}
+
+a.nav-user-profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+}
+
+a.nav-user-profile:hover{
+    background: #f3f4f7;
+}
+
+.nav-user-profile div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.nav-user-profile div #nav-username{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.nav-user-profile div #nav-logout-bt{
+    color: red;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.user-nike-card img{
+    background-size: contain;
+}
+
+.card-body .card-title{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* admin dashboard */
+:root {
+    --main-bg-color: #009d63;
+    --main-text-color: #009d63;
+    --second-text-color: #bbbec5;
+    --second-bg-color: #c1efde;
+}
+
+.primary-text {
+    color: var(--main-text-color);
+}
+
+.second-text {
+    color: var(--second-text-color);
+}
+
+.primary-bg {
+    background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+    background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+    border-radius: 100%;
+}
+
+#wrapper {
+    overflow-x: hidden;
+    background-image: linear-gradient(
+            to right,
+            #baf3d7,
+            #c2f5de,
+            #cbf7e4,
+            #d4f8ea,
+            #ddfaef
+    );
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+div.complete-table-wrap{
+    display: none;
+}
+
+div.complete-table-wrap.active{
+    display: block;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+#menu-toggle {
+    cursor: pointer;
+}
+
+a.list-group-item{
+    border: none;
+    padding: 1rem 2rem;
+}
+
+a.list-group-item, a.list-group-item i{
+    cursor: pointer;
+}
+
+a.list-group-item.active{
+    background-color: transparent;
+    color: var(--main-text-color);
+    font-weight: bold;
+    border: none;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
