@@ -246,9 +246,16 @@ func AdminNewUserHandler(w http.ResponseWriter, r *http.Request) {
 	data := title{
 		PageTitle: "Create User",
 	}
-	err := template.Tpl.ExecuteTemplate(w, "create-user-page.gohtml", data)
-	if err != nil {
-		log.Fatal(err)
+
+	session, _ := utils.Store.Get(r, "session")
+
+	if session.Values["adminAuthenticated"] == true {
+		err := template.Tpl.ExecuteTemplate(w, "create-user-page.gohtml", data)
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		http.Redirect(w, r, "/admin/login", http.StatusSeeOther)
 	}
 }
 
@@ -303,9 +310,15 @@ func UpdateUserPageHandler(w http.ResponseWriter, r *http.Request) {
 	data := database.GetUserData(userId)
 	data.PageTitle = "Update User"
 
-	err := template.Tpl.ExecuteTemplate(w, "update_user_page.gohtml", data)
-	if err != nil {
-		log.Fatal("Error is here ", err.Error())
+	session, _ := utils.Store.Get(r, "session")
+
+	if session.Values["adminAuthenticated"] == true {
+		err := template.Tpl.ExecuteTemplate(w, "update_user_page.gohtml", data)
+		if err != nil {
+			log.Fatal("Error is here ", err.Error())
+		}
+	} else {
+		http.Redirect(w, r, "/admin/login", http.StatusSeeOther)
 	}
 }
 
