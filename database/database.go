@@ -1,6 +1,7 @@
 package database
 
 import (
+	"authentication_with_db/utils"
 	"database/sql"
 	"fmt"
 	"github.com/joho/godotenv"
@@ -35,6 +36,7 @@ func ConnectDb() {
 		dbName:  os.Getenv("DB_NAME"),
 		sslMode: os.Getenv("DB_SSLMODE"),
 	}
+	utils.Key = os.Getenv("SESSION_KEY")
 
 	psql := fmt.Sprintf("host= %s port= %s user= %s password= %s dbname= %s sslmode= %s",
 		configure.host,
@@ -42,8 +44,7 @@ func ConnectDb() {
 		configure.user,
 		configure.pass,
 		configure.dbName,
-		configure.sslMode,
-	)
+		configure.sslMode)
 
 	Db, err = sql.Open("postgres", psql)
 	if err != nil {

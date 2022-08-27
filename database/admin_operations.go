@@ -3,6 +3,7 @@ package database
 import (
 	"authentication_with_db/models"
 	"authentication_with_db/utils"
+	"database/sql"
 	"log"
 )
 
@@ -27,22 +28,7 @@ func LoginAdmin(givenEmail, givenPass string) (string, bool) {
 	if email == givenEmail {
 		if utils.CheckPasswordMatch(givenPass, pass) {
 			flag = true
-
-			// Get elements for admin dashboard
-			countMap := getEntityCount()
-			productTb := getProductsTable()
-			userTb := getUsersTable()
-			adminTb := getAdminsTb()
-
-			data := models.AdminModel{
-				AdminEmail:   givenEmail,
-				AdminName:    name,
-				EntityCounts: countMap,
-				ProductsTb:   productTb,
-				UsersTb:      userTb,
-				AdminsTb:     adminTb,
-			}
-			models.InitAdminModel(data)
+			GetValuesForAdminModel(name, givenEmail)
 		}
 	}
 
@@ -51,6 +37,24 @@ func LoginAdmin(givenEmail, givenPass string) (string, bool) {
 	} else {
 		return "", false
 	}
+}
+
+func GetValuesForAdminModel(name, email string) {
+	// Get elements for admin dashboard
+	countMap := getEntityCount()
+	productTb := getProductsTable()
+	userTb := getUsersTable()
+	adminTb := getAdminsTb()
+
+	data := models.AdminModel{
+		AdminEmail:   email,
+		AdminName:    name,
+		EntityCounts: countMap,
+		ProductsTb:   productTb,
+		UsersTb:      userTb,
+		AdminsTb:     adminTb,
+	}
+	models.InitAdminModel(data)
 }
 
 // GetEntityCount - Take the counts of the entities like admin, user, and products
@@ -179,9 +183,74 @@ func getAdminsTb() []models.AdminsTbContent {
 	return res
 }
 
-func DeleteUser(id string) {
-	_, err := Db.Exec(`DELETE FROM users WHERE user_id = $1`, id)
+func CreateUser(model models.UserModel, password string) sql.Result {
+	result, err := Db.Exec(`INSERT INTO users(user_name, user_email, user_password, product_id_1, product_id_2, product_id_3, product_id_4, product_id_5) 
+VALUES($1, $2, $3, $4, $5, $6, $7, $8);`, model.UserName, model.UserEmail, password, model.UserProduct1, model.UserProduct2, model.UserProduct3, model.UserProduct4, model.UserProduct5)
 	if err != nil {
 		log.Fatal(err)
 	}
+	return result
+}
+
+// Get the user details to update the user data
+func GetUserData(id string) models.UserModel {
+	var name, email string
+	var product1, product2, product3, product4, product5 *string
+
+	row := Db.QueryRow(`SELECT user_name, user_email, product_id_1, product_id_2, product_id_3, product_id_4, product_id_5 
+FROM users WHERE user_id = $1;`, id)
+
+	if err := row.Scan(&name, &email, &product1, &product2, &product3, &product4, &product5); err != nil {
+		log.Fatal(err.Error())
+	}
+
+	var null string = ""
+	// null checking
+	if product1 == nil {
+		product1 = &null
+	}
+	if product2 == nil {
+		product2 = &null
+	}
+	if product3 == nil {
+		product3 = &null
+	}
+	if product4 == nil {
+		product4 = &null
+	}
+	if product5 == nil {
+		product5 = &null
+	}
+	// null checking ends here
+
+	data := models.UserModel{
+		UserId:       id,
+		UserName:     name,
+		UserEmail:    email,
+		UserProduct1: *product1,
+		UserProduct2: *product2,
+		UserProduct3: *product3,
+		UserProduct4: *product4,
+		UserProduct5: *product5,
+	}
+
+	return data
+}
+
+func UpdateUserDatas(id, product1, product2, product3, product4, product5 string) bool {
+	_, err := Db.Exec(`UPDATE users SET product_id_1 = $1, product_id_2 = $2, product_id_3 = $3, product_id_4 = $4, product_id_5 = $5 WHERE user_id = $6;`, product1, product2, product3, product4, product5, id)
+	if err != nil {
+		log.Fatal(err.Error())
+		return false
+	}
+
+	return true
+}
+
+func DeleteUser(id string) {
+	_, err := Db.Exec(`DELETE FROM users WHERE user_id = $1;`, id)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return
 }

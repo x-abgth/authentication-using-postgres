@@ -1,0 +1,49 @@
+{{ template "header" . }}
+    <body class="d-flex flex-column align-items-center justify-content-center bg-light">
+        <h2>FORM TO UPDATE - USER'S DATA</h2>
+        {{ if . }}
+        <form class="p-3 w-100" method="POST" action="/admin/update-user/{{ .UserId }}">
+
+            <div class="p-3 d-flex flex-row justify-content-between">
+                <div class="info-box bg-white px-4 py-2 d-flex flex-column justify-content-center align-items-center rounded">
+                    <h3>Id</h3>
+                    <p>{{ .UserId }}</p>
+                </div>
+                <div class="info-box bg-white px-4 py-2 d-flex flex-column justify-content-center align-items-center rounded">
+                    <h3>Username</h3>
+                    <p>{{ .UserName }}</p>
+                </div>
+                <div class="info-box bg-white px-4 py-2 d-flex flex-column justify-content-center align-items-center rounded">
+                    <h3>Email</h3>
+                    <p>{{ .UserEmail }}</p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6 my-2">
+                <label for="inputProduct1">Product 1 (ID)</label>
+                <input name="userProduct1" type="text" class="form-control" id="inputProduct1" value="{{ .UserProduct1 }}" required>
+            </div>
+            <div class="form-group col-md-6 my-2">
+                <label for="inputProduct2">Product 2 (ID)</label>
+                <input name="userProduct2" type="text" class="form-control" id="inputProduct2" value="{{ .UserProduct2 }}" required>
+            </div>
+            <div class="form-group col-md-6 my-2">
+                <label for="inputProduct3">Product 3 (ID)</label>
+                <input name="userProduct3" type="text" class="form-control" id="inputProduct3" value="{{ .UserProduct3 }}" required>
+            </div>
+            <div class="form-group col-md-6 my-2">
+                <label for="inputProduct4">Product 4 (ID)</label>
+                <input name="userProduct4" type="text" class="form-control" id="inputProduct4" value="{{ .UserProduct4 }}" required>
+            </div>
+            <div class="form-group col-md-6 my-2">
+                <label for="inputProduct5">Product 5 (ID)</label>
+                <input name="userProduct5" type="text" class="form-control" id="inputProduct5" value="{{ .UserProduct5 }}" required>
+            </div>
+
+            <div class="w-auto d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary my-2 text-align-center">Update</button>
+            </div>
+        </form>
+        {{ end }}
+    </body>
+</html>

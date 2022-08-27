@@ -11,7 +11,7 @@
           <div class="slide-tab"></div>
         </div>
         <div class="form-inner">
-          <form class="login-form d-flex flex-column align-items-center justify-content-center" action="/user-authenticate" method="POST">
+          <form class="login-form d-flex flex-column align-items-center justify-content-center" action="/user/authenticate" method="POST">
             <div class="mb-4 col-12 col-md-10">
               <label class="form-label" for="exampleInputEmail1">Email address</label>
               <input class="form-control" name="emailId" type="email" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -24,7 +24,7 @@
           </form>
 
           <!-- FORM TO REGISTER -->
-          <form class="register-form d-flex flex-column align-items-center justify-content-center" action="/user-register" method="POST">
+          <form class="register-form d-flex flex-column align-items-center justify-content-center" action="/user/register" method="POST">
             <div class="mb-3 col-12 col-md-10">
               <label class="form-label" for="exampleInputName2">Name</label>
               <input class="form-control" name="name" type="text" id="exampleInputName2">
@@ -40,7 +40,7 @@
             <button class="btn btn-success py-2" type="submit">Sign-Up</button>
           </form>
         </div>
-        <p class="my-4 account-switch">If you are admin, please login here - &nbsp;<a href="/admin-login">admin only</a></p>
+        <p class="my-4 account-switch">If you are admin, please login here - &nbsp;<a href="/admin/login">admin only</a></p>
       </div>
     </div>
   </section>

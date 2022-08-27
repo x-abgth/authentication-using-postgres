@@ -3,7 +3,6 @@ package database
 import (
 	"authentication_with_db/models"
 	"authentication_with_db/utils"
-	"fmt"
 	"log"
 )
 
@@ -63,7 +62,6 @@ func LoginUser(formEmail, formPassword string) bool {
 
 	if email == formEmail {
 		if utils.CheckPasswordMatch(formPassword, pass) == true {
-			fmt.Println(pass)
 			flag = true
 			var user models.UserModel
 			if product1 == nil {

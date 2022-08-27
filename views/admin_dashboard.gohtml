@@ -10,7 +10,7 @@
         <a href="javascript:productsSec()" id="sidebar-element-1" class="list-group-item list-group-item-action bg-transparent second-text fw-bold active"><i class='fas fa-box-open me-2'></i>Products</a>
         <a href="javascript:usersSec()" id="sidebar-element-2" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class='fas fa-user-friends me-2'></i>Users</a>
         <a href="javascript:adminsSec()" id="sidebar-element-3" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class='fas fa-user-shield me-2'></i>Admins</a>
-        <a href="/logout" id="sidebar-element-4" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+        <a href="/admin/logout" id="sidebar-element-4" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                 class="fas fa-power-off me-2"></i>Logout</a>
       </div>
     </div>
@@ -137,13 +137,11 @@
     </script>
 
     <script>
-
       $(document).ready( function () {
         $('#products-table').DataTable();
         $('#admins-table').DataTable();
         $('#users-table').DataTable();
       });
-
     </script>
   </body>
 </html>

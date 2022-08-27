@@ -32,19 +32,26 @@ func main() {
 	gorillaMux.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", fileServe))
 
 	// user's
+	userRoutes := gorillaMux.PathPrefix("/user").Subrouter()
 	gorillaMux.HandleFunc("/", handlers.UserLoginPageHandler)
-	gorillaMux.HandleFunc("/user-authenticate", handlers.AuthenticateUserHandler)
-	gorillaMux.HandleFunc("/user-register", handlers.UserRegisterPageHandler)
-	gorillaMux.HandleFunc("/user-dashboard", handlers.UserDashboardPageHandler)
+	userRoutes.HandleFunc("/authenticate", handlers.AuthenticateUserHandler)
+	userRoutes.HandleFunc("/register", handlers.UserRegisterPageHandler)
+	userRoutes.HandleFunc("/dashboard", handlers.UserDashboardPageHandler)
+	userRoutes.HandleFunc("/logout", handlers.UserLogoutHandler)
 
 	// Admin's
-	gorillaMux.HandleFunc("/admin-login", handlers.AdminLoginPageHandler)
-	gorillaMux.HandleFunc("/admin-authenticate", handlers.AdminAuthenticateHandler)
-	gorillaMux.HandleFunc("/admin-dashboard", handlers.AdminDashboardPageHandler)
+	adminRoutes := gorillaMux.PathPrefix("/admin").Subrouter()
+	adminRoutes.HandleFunc("/login", handlers.AdminLoginPageHandler)
+	adminRoutes.HandleFunc("/authenticate", handlers.AdminAuthenticateHandler)
+	adminRoutes.HandleFunc("/dashboard", handlers.AdminDashboardPageHandler)
+	adminRoutes.HandleFunc("/logout", handlers.AdminLogoutHandler)
 
 	// Admin operations handlers
-	//gorillaMux.HandleFunc("/update-user/{userId}", handlers.UpdateUserHandler).Methods("PUT")
-	gorillaMux.HandleFunc("/delete-user/{userId}", handlers.DeleteUserHandler).Methods("DELETE")
+	adminRoutes.HandleFunc("/new-user-form", handlers.AdminNewUserHandler)
+	adminRoutes.HandleFunc("/create-new-user", handlers.AdminCreateUserHandler)
+	adminRoutes.HandleFunc("/update-user-form/{userId}", handlers.UpdateUserPageHandler)
+	adminRoutes.HandleFunc("/update-user/{userId}", handlers.UpdateUserHandler)
+	adminRoutes.HandleFunc("/delete-user/{userId}", handlers.DeleteUserHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", gorillaMux))
 }

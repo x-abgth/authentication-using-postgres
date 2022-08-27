@@ -1,6 +1,9 @@
 <!--  Table starts from here  -->
 <div class="row my-5 complete-table-wrap" id="users-table-sec">
-    <h3 class="fs-4 mb-3">Users Table</h3>
+    <div class="d-flex flex-row justify-content-between w-30 my-2">
+        <h3 class="fs-4 mb-3">Users Table</h3>
+        <a href="/admin/new-user-form" class="add-new-bts btn btn-primary" id="new-user-bt">Add new</a>
+    </div>
     <div class="col">
         <table class="table bg-white rounded shadow-sm  table-hover"  id="users-table">
             <thead>
@@ -27,7 +30,11 @@
                     <td>{{ .UserProduct3 }}</td>
                     <td>{{ .UserProduct4 }}</td>
                     <td>{{ .UserProduct5 }}</td>
-                    <td></td>
+                    <td>
+                        <a href="/admin/update-user-form/{{ .UserId }}"><i class="material-icons" style="font-size:28px">edit</i></a>
+                        &nbsp;&nbsp;
+                        <a href="/admin/delete-user/{{ .UserId }}" onclick="return confirm('Delete the user {{ .UserName }} ?')"><i class="material-icons" style="font-size:28px;color:red">delete</i></a>
+                    </td>
                 </tr>
             {{ end }}
             </tbody>
