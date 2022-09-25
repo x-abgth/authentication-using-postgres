@@ -16,7 +16,6 @@ import (
 // -------------------------------------------------------------------------------------------------------
 
 func UserLoginPageHandler(w http.ResponseWriter, r *http.Request) {
-
 	session, err := utils.Store.Get(r, "session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -145,7 +144,6 @@ func UserLogoutHandler(w http.ResponseWriter, r *http.Request) {
 // -------------------------------------------------------------------------------------------------------
 
 func AdminLoginPageHandler(w http.ResponseWriter, r *http.Request) {
-
 	session, _ := utils.Store.Get(r, "session")
 
 	if session.Values["adminAuthenticated"] != true {
@@ -153,7 +151,6 @@ func AdminLoginPageHandler(w http.ResponseWriter, r *http.Request) {
 			PageTitle: "Admin Login",
 		}
 
-		// TODO: Implement session and cookies or jwt
 		err := template.Tpl.ExecuteTemplate(w, "admin_login.gohtml", data)
 		if err != nil {
 			log.Fatal(err)
@@ -165,7 +162,6 @@ func AdminLoginPageHandler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Expires", "0")
 		http.Redirect(w, r, "/admin/dashboard", http.StatusFound)
 	}
-
 }
 
 func AdminAuthenticateHandler(w http.ResponseWriter, r *http.Request) {

@@ -9,6 +9,11 @@ import (
 	"net/http"
 )
 
+// ------------------- NEEDS TO UPDATE ---------------------
+// TODO: use gorm to migrate database (create db and tables)
+// TODO: store product data as json in user table
+// ---------------------------------------------------------
+
 // Served static html contents
 func init() {
 	var err error
